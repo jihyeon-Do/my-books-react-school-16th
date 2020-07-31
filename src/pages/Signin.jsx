@@ -2,119 +2,26 @@ import React from 'react';
 import axios from 'axios';
 import { message } from 'antd';
 import withAuth from '../hocs/withAuth';
-import styled, { css } from 'styled-components';
-
-// 스타일을 먹인 컴포넌트를 쓴다는것
-// - button
-// - Button
-
-const LoginHeader = styled.h1`
-  text-align: center;
-  font-size: 40px;
-  margin: 0;
-`;
-
-const Wrapper = styled.div`
-  width: 800px;
-  height: 500px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: 0px 20px 30px 10px #dbdbdb;
-`;
-
-const LoginButton = styled.button`
-  width: 100%;
-  margin-top: 40px;
-  height: 50px;
-  border-radius: 30px;
-  border: 0;
-  font-size: 20px;
-  :hover {
-    cursor: pointer;
-  }
-  ${(props) => {
-    return (
-      props.primary &&
-      css`
-        background-color: #05137a;
-        color: white;
-      `
-    );
-  }};
-`;
-
-const BodyBackground = styled.div`
-  width: 50%;
-  height: 100%;
-  float: left;
-  background: linear-gradient(130deg, #1a6db8, #7eaed9);
-`;
-
-const LoginBox = styled.div`
-  float: left;
-  width: 50%;
-  height: 100%;
-  padding: 50px 0;
-  label {
-    display: block;
-  }
-
-  label:last-of-type {
-    margin-top: 15px;
-  }
-
-  form {
-    padding: 30px 50px;
-
-    input {
-      display: block;
-      width: 100%;
-      height: 35px;
-      border: 1px solid gray;
-    }
-  }
-`;
-
-const Title = styled.h2`
-  text-align: center;
-  font-size: 30px;
-  margin: 0;
-`;
 
 class Signin extends React.Component {
   state = {
     email: '',
   };
-
   passwordRef = React.createRef(); // 한번 만들어지면 객체 인스턴스는 그대로
   render() {
-    console.log(this.props);
     return (
-      <Wrapper>
-        <BodyBackground></BodyBackground>
-        <LoginBox>
-          <LoginHeader>Sign in</LoginHeader>
-          <Title>Welcome Back</Title>
-          <form>
-            <fieldset>
-              <label htmlFor="id">Email *</label>
-              <input
-                id="id"
-                type="text"
-                value={this.state.email}
-                onChange={this.change}
-              />
-              <label htmlFor="password">password *</label>
-              <input id="password" type="password" ref={this.passwordRef} />
-              <LoginButton onClick={this.click} primary>
-                Login
-              </LoginButton>
-            </fieldset>
-          </form>
-        </LoginBox>
-      </Wrapper>
+      <div>
+        <h1>로그인</h1>
+        <p>
+          <input type="text" value={this.state.email} onChange={this.change} />
+        </p>
+        <p>
+          <input type="password" ref={this.passwordRef} />
+        </p>
+        <p>
+          <button onClick={this.click}>로그인</button>
+        </p>
+      </div>
     );
   }
 
